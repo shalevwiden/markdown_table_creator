@@ -92,7 +92,6 @@ def generate_md_with_table(tableobject,folderpath):
         filename=f'{folderpath}/markdowntable.md'
         with open(filename,'w') as mdfile:
             mdfile.write('# Markdowntable Outcome\n')
-            mdfile.write("---")
             mdfile.write('## The generated markdown table is below:\n')
 
             for row in tableobject:
@@ -130,5 +129,5 @@ def csv_testcases():
     print(f'Test3:\n')
     test3=create_csv_object(3,9,'3rd')
     
-
+# this returns nothing
 print(csv_testcases())
