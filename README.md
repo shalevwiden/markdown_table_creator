@@ -10,6 +10,11 @@ You can copy a csv into an Excel or google sheets document, or open it directly 
 
 ### Breaking down the createmarkdowntable3() function:
 
+```python
+def createmarkdowntable3(rows, columns, placeholder,headings= True):
+
+```
+
 The function has 4 parameters:
 
 - rows (int)
@@ -28,8 +33,27 @@ The function is createmarkdowntable3 since its the 3rd version of this function,
 
 ### generate_md_with_table function:
 
+```python
+def generate_md_with_table(tableobject,folderpath):
+
+```
+
 This function takes a tableobject and a folderpath and generates a markdown file with the table object in it. Each file will be named markdowntable.md by default, but the filename can be changed with the filename parameter.
 
 ### Generate csv object:
 
+```python
+def create_csv_object(rows, columns, placeholder, headings=True):
+
+```
+
 Creates a csv object(list) which can later be used in the generatecsv function.
+
+### Generate CSV file
+
+```python
+def generatecsv(csvobject, folderpath):
+
+```
+
+Uses the csvobject to make a csv file in a specified file path. The csv can then be viewed in vs code in its comma format or opened in an editor to view in tabular format.
