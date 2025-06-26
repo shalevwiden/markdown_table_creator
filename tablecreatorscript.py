@@ -84,11 +84,14 @@ def mdtestcases():
     # even if the column lines arent perfectly aligned it will still create a table.
     secondtestcase=createmarkdowntable3(3,3,'123456789')
 
+    return "return this so no errors"
+
 
 
 printtestcases=mdtestcases()
 
 def generate_md_with_table(tableobject,folderpath):
+        
         filename=f'{folderpath}/markdowntable.md'
         with open(filename,'w') as mdfile:
             mdfile.write('# Markdowntable Outcome\n')
@@ -98,9 +101,14 @@ def generate_md_with_table(tableobject,folderpath):
                 mdfile.write(row+'\n')
         print(f'Generated {filename[-17:]} at {folderpath}')
 
+        return "return this so no errors"
+
+
 generate_md_with_table(tableobject=createmarkdowntable3(3,3,'box'),folderpath=os.getcwd())
+
 def create_csv_object(rows, columns, placeholder, headings=True):
     csvobject=[]
+    # initialize the row stuff
     for i in range(rows):
         csvobject.append('')
     for i in range(rows):
@@ -117,17 +125,38 @@ def create_csv_object(rows, columns, placeholder, headings=True):
     
 
 
-def generatecsv(csvobject, folderpath):
-    pass
+def generatecsv(csvobject, folderpath,csvname='generatedcsv'):
+    '''
+    Makes the csv file with the csv object to a folderpath , and with the csv object the rows and columns are specified already
+    '''
+    fullpath=f'{folderpath}/{csvname}.csv'
+    with open(fullpath,'w',newline='') as csv_file:
+        writer=csv.writer(csv_file)
+        for row in csvobject:
+            row=row.split(',')
+            writer.writerow(row)
+        print(f'Made {fullpath}')
+    return "return this so no errors"
+
+
+
+# need to finish this function still
 
 def csv_testcases():
     print('\n')
+
     print(f'Test1:\n')
     test1=create_csv_object(3,3,'a')
     print(f'Test2:\n')
     test2=create_csv_object(10,2,'csv')
+
     print(f'Test3:\n')
-    test3=create_csv_object(3,9,'3rd')
+    test3csvobject=create_csv_object(3,9,'3rd')
+    print('\nThe following is teset3 csv object\n')
+    print(test3csvobject)
+
+    print("\nNext is the creation of a csv document based on the csv object")
+    csvtest1=generatecsv(csvobject=test3csvobject, folderpath=os.getcwd())
     
-# this returns nothing
-print(csv_testcases())
+# this returns nothing but runs all the prints and calls
+csv_testcases()

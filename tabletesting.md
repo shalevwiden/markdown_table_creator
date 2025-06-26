@@ -1,14 +1,4 @@
-## Table
-
-| test | test2
-
-|test|a|
-
-## | Column 0 | Column 0 | Column 0 |
-
-## | a | a | a |
-
-## | a | a | a |
+## Table Testing
 
 | Column 1   | Column 2   |
 | ---------- | ---------- | -------------- |
@@ -16,6 +6,8 @@
 | ---------- | ---------- | ← ❌ not valid |
 | Value C    | Value D    |
 | ---------- | ---------- | ← ❌ not valid |
+
+  <br>
 
 | Column 0 | Column 1 |
 | -------- | -------- |
@@ -26,11 +18,19 @@
 | -------- | -------- | -------- |
 | 1234     | 1234     | 1234     |
 
-<!-- must copy the rendered markdown view to put it in notion -->
+  <br>
+  <br>
+
+---
+
+must copy the rendered markdown view to put it in notion
+<br>
 
 | Column 0 | Column 1 | Column 2 |
 | -------- | -------- | -------- |
 | 1234     | 1234     | 1234     |
+
+Empty Table
 
 |     |     |     |     |
 | --- | --- | --- | --- |

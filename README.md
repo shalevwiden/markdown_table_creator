@@ -6,6 +6,8 @@ In order to copy the table into something like notion, instead of copying from t
 
 You can copy a csv into an Excel or google sheets document, or open it directly with Excel.
 
+In this project I also defined a few testing functions `csv_testcases()` and `mdtestcases()` to experiment and make sure the md and csv functions were working.
+
 ---
 
 ### Breaking down the createmarkdowntable3() function:
@@ -30,6 +32,8 @@ Then the generate_md_with_table() function will also create a .md file with the 
 
 The function returns a tableobject (a list) where each item in the list is a row in the table, which is later used in the generate_md_with_table() function.
 The function is createmarkdowntable3 since its the 3rd version of this function, the first two didnt quite work out, and are in the firstdrafts.py file.
+
+I realized I did way too much work on this because markdown tables can have diferent length columns per row in the table and still work. I was making sure each column is the same length.
 
 ### generate_md_with_table function:
 
