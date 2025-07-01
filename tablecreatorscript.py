@@ -2,6 +2,8 @@
 import csv
 import os
 
+import re
+
 
 '''
 
@@ -92,71 +94,86 @@ printtestcases=mdtestcases()
 
 def generate_md_with_table(tableobject,folderpath):
         
-        filename=f'{folderpath}/markdowntable.md'
-        with open(filename,'w') as mdfile:
-            mdfile.write('# Markdowntable Outcome\n')
-            mdfile.write('## The generated markdown table is below:\n')
+    filename=f'{folderpath}/markdowntable.md'
+    with open(filename,'w') as mdfile:
+        mdfile.write('# Markdowntable Outcome\n')
+        mdfile.write('## The generated markdown table is below:\n')
 
-            for row in tableobject:
-                mdfile.write(row+'\n')
-        print(f'Generated {filename[-17:]} at {folderpath}')
+        for row in tableobject:
+            mdfile.write(row+'\n')
+    print(f'Generated {filename[-17:]} at {folderpath}')
 
-        return "return this so no errors"
+    return "return this so no errors"
 
 
 generate_md_with_table(tableobject=createmarkdowntable3(3,3,'box'),folderpath=os.getcwd())
 
-def create_csv_object(rows, columns, placeholder, headings=True):
-    csvobject=[]
-    # initialize the row stuff
-    for i in range(rows):
-        csvobject.append('')
-    for i in range(rows):
-        for j in range(columns):
-            # make it so that so that the last column doesnt have a comma. 
-            if j==columns-1:
-                csvobject[i]+=f'{placeholder}'
-            else:
-                csvobject[i]+=f'{placeholder},'
-   # print the csv object, can comment this out:
-    for generatedrow in csvobject:
-        print(generatedrow)
-    return csvobject
-    
+# automating some markdown folder creation for my website project
 
+'''Website Automation Stuff:'''
+# I can also borrow the delete script from my animation project to clear out mishaps
 
-def generatecsv(csvobject, folderpath,csvname='generatedcsv'):
-    '''
-    Makes the csv file with the csv object to a folderpath , and with the csv object the rows and columns are specified already
-    '''
-    fullpath=f'{folderpath}/{csvname}.csv'
-    with open(fullpath,'w',newline='') as csv_file:
-        writer=csv.writer(csv_file)
-        for row in csvobject:
-            row=row.split(',')
-            writer.writerow(row)
-        print(f'Made {fullpath}')
+def modified_generate_md_with_table(tableobject,folderpath):
+    # the folderpath will be the assetstorage{num} folder
+        
+    lastnum=folderpath.split('/')[-1].split('e')[-1]
+
+    filename=f'{folderpath}/markdowntablefile{lastnum}.md'
+    with open(filename,'w') as mdfile:
+        mdfile.write(f'# Markdown Table File {lastnum}\n')
+        mdfile.write('### The generated markdown table is below:\n')
+
+        for row in tableobject:
+            mdfile.write(row+'\n')
+        mdfile.write("\n")
+        mdfile.write(f'It has {lastnum} rows and {lastnum} columns  \n')
+        mdfile.write('Generated from the `modified_generate_md_with_table()` function.  \nAnd the `automate_md_and_csv_creation()` function.\n')
+        mdfile.write(f'''
+    ```python
+                     modified_generate_md_with_table(tableobject,folderpath)
+                     automate_md_and_csv_creation(folderpath)
+                     ```  \n
+''')
+    print(f'Generated {filename.split('/')[-1]} at {folderpath}')
+
     return "return this so no errors"
 
+folderpath='/Users/shalevwiden/Downloads/Projects/website_programming_project/website/assets'
+def automate_md_creation(folderpath):
+    '''
+    Generates sample files for website programming project
+    '''
+    maindirs=os.listdir(folderpath)
+    # first get sorted lists
+    for dir in maindirs:
+        dirs1_5=maindirs[0]
+        dirs6_10=maindirs[1]
 
+    in_dirs1_5=os.listdir(f'{folderpath}/{dirs1_5}')
+    in_dirs6_10=os.listdir(f'{folderpath}/{dirs6_10}')
 
-# need to finish this function still
-
-def csv_testcases():
-    print('\n')
-
-    print(f'Test1:\n')
-    test1=create_csv_object(3,3,'a')
-    print(f'Test2:\n')
-    test2=create_csv_object(10,2,'csv')
-
-    print(f'Test3:\n')
-    test3csvobject=create_csv_object(3,9,'3rd')
-    print('\nThe following is teset3 csv object\n')
-    print(test3csvobject)
-
-    print("\nNext is the creation of a csv document based on the csv object")
-    csvtest1=generatecsv(csvobject=test3csvobject, folderpath=os.getcwd())
+    # damn both of these work lmao
+    example='assetfolder1'
+    # this is what Im doing down below
+    num=example.split('e')[-1]
+    in_dirs1_5=sorted(in_dirs1_5,key=lambda x:int(x.split('e')[-1]))
     
-# this returns nothing but runs all the prints and calls
-csv_testcases()
+    # tried new method with re.split()
+    in_dirs6_10=sorted(in_dirs6_10,key=lambda x:int(re.split(r'(\d+)', x)[1]))
+
+    # then add it all to the assets folder
+
+    # in_dirs is the actual folders. dirs1_5 is the storage folder
+    for folder in in_dirs1_5:
+        fullpath=f'{folderpath}/{dirs1_5}/{folder}'
+
+        tableobject=createmarkdowntable3(rows=num,columns=num,placeholder=num)
+        modified_generate_md_with_table(tableobject=tableobject,folderpath=fullpath)
+    for folder in in_dirs6_10:
+        fullpath=f'{folderpath}/{dirs1_5}/{folder}'
+
+        tableobject=createmarkdowntable3(rows=num,columns=num,placeholder=num)
+        modified_generate_md_with_table(tableobject=tableobject,folderpath=fullpath)
+
+
+print(f'automate_md_creation:\n{automate_md_creation(folderpath=folderpath)}')
