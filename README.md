@@ -61,3 +61,7 @@ def generatecsv(csvobject, folderpath):
 ```
 
 Uses the csvobject to make a csv file in a specified file path. The csv can then be viewed in vs code in its comma format or opened in an editor to view in tabular format.
+
+---
+
+July 1st, 2025. This script has been updated to mass generate md and csv files in an assets folder for a website programming project.

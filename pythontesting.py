@@ -1,4 +1,5 @@
 import re
+import os
 
 text=['subfolder20','subfolder21']
 relearning=[[int(s) if s.isdigit() else s for s in re.split(r'(\d+)', item)] for item in text]
