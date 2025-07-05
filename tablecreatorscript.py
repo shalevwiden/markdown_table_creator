@@ -134,7 +134,7 @@ def modified_generate_md_with_table(tableobject,folderpath):
         for row in tableobject:
             mdfile.write(row+'\n')
 
-        mdfile.write("\n")
+        mdfile.write("<br>\n<br>\n\n")
         mdfile.write(f'It has {lastnum} rows and {lastnum} columns. Also headings=True is the default argument when creating the table, so it has headings.<br>In addition the values are centered due to the use of \':-:\'. \n\n')
         mdfile.write('Generated from the `modified_generate_md_with_table()` function.  \nAnd the `automate_md_and_csv_creation()` function.\n')
         mdfile.write(f'''
@@ -150,8 +150,10 @@ modified_generate_md_with_table(tableobject=tableobject,folderpath=fullpath)
 csvobject=create_csv_object(rows=num,columns=num,placeholder=num,headings=False)
 generatecsv(csvobject=csvobject,folderpath=fullpath)
 ```  \n
-''')
+''')    
+        mdfile.write('---\n')
         mdfile.write('Both of those code snippets are found in `automate_md_creation(folderpath)` and `automate_csv_creation(folderpath)`, respectively. ')
+
     print(f'Generated {filename.split('/')[-1]} at {folderpath}\n')
 
     return "return this so no errors"
@@ -203,4 +205,8 @@ def automate_md_creation(folderpath):
 
 def runthemdcreation():
     print(f'automate_md_creation:\n{automate_md_creation(folderpath=folderpath)}')
-    
+
+def generate50tablefile():
+    fiftyobject=createmarkdowntable3(rows=50,columns=50,placeholder=50)
+    modified_generate_md_with_table(tableobject=fiftyobject,folderpath='/Users/shalevwiden/Downloads/Projects/website_programming_project/website/assets/webassetfolder50')
+generate50tablefile()

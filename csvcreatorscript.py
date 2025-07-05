@@ -81,7 +81,8 @@ csv_testcases()
 
 
 
-folderpath='/Users/shalevwiden/Downloads/Projects/website_programming_project/website/assets'
+# I can just use abspath for working in the same directory though
+folderpath=('../../../../Projects/website_programming_project/website/assets')
 
 def automate_csv_creation(folderpath):
     '''
@@ -131,3 +132,9 @@ def automate_csv_creation(folderpath):
 
 def runthecsvcreation():
     print(f'automate_csv_creation:\n{automate_csv_creation(folderpath=folderpath)}')
+# runthecsvcreation()
+print(f'Does folderpath exist? \n{os.path.exists(folderpath)}')
+
+def generate50():
+    fiftyobject=create_csv_object(rows=50,columns=50,placeholder=50, headings=False)
+    generatecsv(fiftyobject,'/Users/shalevwiden/Downloads/Projects/website_programming_project/website/assets/webassetfolder50')

@@ -64,4 +64,4 @@ Uses the csvobject to make a csv file in a specified file path. The csv can then
 
 ---
 
-July 1st, 2025. This script has been updated to mass generate md and csv files in an assets folder for a website programming project.
+July 1st, 2025. This script has been updated to mass generate md and csv files in an assets folder for a website creation project to better understand how to work with data files on websites, "website_programming_project".
