@@ -92,6 +92,7 @@ def automate_csv_creation(folderpath):
 
 
     maindirs=[item for item in os.listdir(folderpath) if os.path.isdir(f'{folderpath}/{item}')]
+    maindirs=[item for item in maindirs if "50" not in item]
     # first get sorted lists
     for dir in maindirs:
         dirs1_5=maindirs[0]
@@ -132,7 +133,13 @@ def automate_csv_creation(folderpath):
 
 def runthecsvcreation():
     print(f'automate_csv_creation:\n{automate_csv_creation(folderpath=folderpath)}')
+
+
+
 # runthecsvcreation()
+
+
+
 print(f'Does folderpath exist? \n{os.path.exists(folderpath)}')
 
 def generate50():

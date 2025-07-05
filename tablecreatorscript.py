@@ -165,6 +165,8 @@ def automate_md_creation(folderpath):
     Generates sample files for website programming project.
     '''
     maindirs=[item for item in os.listdir(folderpath) if os.path.isdir(f'{folderpath}/{item}')]
+    maindirs=[item for item in maindirs if "50" not in item]
+
     # first get sorted lists
     for dir in maindirs:
         dirs1_5=maindirs[0]
@@ -205,8 +207,7 @@ def automate_md_creation(folderpath):
 
 def runthemdcreation():
     print(f'automate_md_creation:\n{automate_md_creation(folderpath=folderpath)}')
-
+# runthemdcreation()
 def generate50tablefile():
     fiftyobject=createmarkdowntable3(rows=50,columns=50,placeholder=50)
     modified_generate_md_with_table(tableobject=fiftyobject,folderpath='/Users/shalevwiden/Downloads/Projects/website_programming_project/website/assets/webassetfolder50')
-generate50tablefile()
